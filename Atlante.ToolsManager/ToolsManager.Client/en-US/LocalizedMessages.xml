@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ToolsManager>
+  <Message Key="UI_ABOUT" Text="About"/>
+  <Message Key="UI_ACCEPT" Text="Accept"/>
+  <Message Key="UI_ACCEPT_TASK" Text="Accept Task"/>
+  <Message Key="UI_ACTION_SHARE_TASK" Text="Sharing tasks"/>
+  <Message Key="UI_ACTION_LOAD_DATA" Text="Loading data"/>
+  <Message Key="UI_ACTION_REFRESH_DATA" Text="Refreshing data"/>
+  <Message Key="UI_ADD" Text="New"/>
+  <Message Key="UI_ADD_TASK" Text="New Task"/>
+  <Message Key="UI_ADDINS" Text="Add-ins"/>
+  <Message Key="UI_ALIGN_BOTTOM" Text="Align Bottom"/>
+  <Message Key="UI_ALIGN_LEFT" Text="Align Left"/>  
+  <Message Key="UI_CANCEL" Text="Cancel"/>
+  <Message Key="UI_CATEGORY" Text="Category"/>
+  <Message Key="UI_CATEGORIES" Text="Categories"/>
+  <Message Key="UI_CLOSE" Text="Close"/>
+  <Message Key="UI_CONFIGURATION" Text="Configuration"/>
+  <Message Key="UI_CONFIGURATION_FILE" Text="Configuration File"/>
+  <Message Key="UI_COPY" Text="Copy"/>
+  <Message Key="UI_DAYS" Text="Days"/>
+  <Message Key="UI_DAILY" Text="Daily"/>
+  <Message Key="UI_DATE" Text="Date"/>
+  <Message Key="UI_DESCRIPTION" Text="Description"/>
+  <Message Key="UI_DISCARD_FILES" Text="Discart Files"/>
+  <Message Key="UI_DOWNLOAD_OPTIONS" Text="Download Options"/>
+  <Message Key="UI_EXECUTE" Text="Execute"/>
+  <Message Key="UI_EXECUTE_TASK" Text="Execute Task"/>
+  <Message Key="UI_FREQUENCY" Text="Frecuency"/>
+  <Message Key="UI_HELP" Text="Help"/>
+  <Message Key="UI_MACHINES" Text="Machines"/>
+  <Message Key="UI_MACHINE_NAME" Text="Machine Name"/>
+  <Message Key="UI_MACHINE_OWNER" Text="Machine Owner"/>
+  <Message Key="UI_MESSAGES" Text="Messages"/>
+  <Message Key="UI_MESSAGE_LIST" Text="Message List"/>
+  <Message Key="UI_MULTIPLE_SELECTION" Text="Multiple Selection"/>
+  <Message Key="UI_LANGUAGE" Text="Language"/>
+  <Message Key="UI_OK" Text="Ok"/>
+  <Message Key="UI_ONE_TIME" Text="One Time"/>
+  <Message Key="UI_OPTIONS" Text="Options"/>
+  <Message Key="UI_OVERWRITE_FILES" Text="Overwrite Files"/>
+  <Message Key="UI_PARAMETER" Text="Parameter"/>
+  <Message Key="UI_PARAMETERS" Text="Parameters"/>
+  <Message Key="UI_PASTE" Text="Paste"/>
+  <Message Key="UI_PASTE_TASK" Text="Paste Task"/>
+  <Message Key="UI_PROPERTY" Text="Property"/>
+  <Message Key="UI_QUESTION_DOWNLOADED_FILES" Text="What do you want to do with the downloaded files?"/>
+  <Message Key="UI_RECUR_EVERY" Text="Recur Every"/>
+  <Message Key="UI_REFRESH" Text="Refresh"/>
+  <Message Key="UI_REFRESH_LIST" Text="Refresh List"/>
+  <Message Key="UI_REMOVE" Text="Remove"/>
+  <Message Key="UI_REMOVE_TASK" Text="Remove Task"/>
+  <Message Key="UI_SAVE" Text="Save"/>
+  <Message Key="UI_SAVE_CHANGES" Text="Save Changes"/>
+  <Message Key="UI_SCHEDULE" Text="Schedule"/>
+  <Message Key="UI_SCHEDULE_TASK" Text="Schedule Task"/>
+  <Message Key="UI_SCHEDULE_ENABLED" Text="Enable Schedule"/>
+  <Message Key="UI_SELECT" Text="Select"/>
+  <Message Key="UI_SETTINGS" Text="Settings"/>
+  <Message Key="UI_SHARE" Text="Share"/>
+  <Message Key="UI_SHARE_TASK" Text="Share Task"/>
+  <Message Key="UI_SHARED_TASKS" Text="Shared Tasks"/>
+  <Message Key="UI_SINGLE_SELECTION" Text="Single Selection"/>
+  <Message Key="UI_START" Text="Start"/>
+  <Message Key="UI_STATUS" Text="Status"/>  
+  <Message Key="UI_TASK" Text="Task"/>
+  <Message Key="UI_TASKS" Text="Tasks"/>
+  <Message Key="UI_TASK_SCHEDULE" Text="Task Schedule"/>
+  <Message Key="UI_TEXT_VISUALIZER" Text="Text Visualizer"/>
+  <Message Key="UI_THEME" Text="Theme"/>
+  <Message Key="UI_TIME" Text="Time"/>
+  <Message Key="UI_TYPE" Text="Type"/>
+  <Message Key="UI_USE_MERGE_APPLICATION" Text="Use a merge tool to choice one by one"/>
+  <Message Key="UI_VALUE" Text="Value"/>
+  <Message Key="UI_VARIABLES" Text="Variables"/>
+  <Message Key="UI_VIEW" Text="View"/>
+  <Message Key="UI_VIEW_DETAILS" Text="View Details"/>
+  <Message Key="UI_VIEW_FLOW" Text="View Flow"/>
+  <Message Key="UI_WEEKLY" Text="Weekly"/>
+</ToolsManager> 

@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Atlante.Presentation.FolderDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:io="clr-namespace:System.IO;assembly=mscorlib"
+             xmlns:converters="clr-namespace:Atlante.Presentation.Converters"
+             Height="358" Width="544">
+
+    <UserControl.Resources>
+
+        <converters:FileSystemToChildInformationConverter x:Key="fileSystemToChildInformationConverter"/>
+
+        <HierarchicalDataTemplate DataType="{x:Type io:DriveInfo}" ItemsSource="{Binding Converter={StaticResource fileSystemToChildInformationConverter}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" Stretch="Fill" Source="Images/diskdrive.png" />
+                <TextBlock Text="{Binding Name}" Margin="5,0,0,0" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type io:DirectoryInfo}" ItemsSource="{Binding Converter={StaticResource fileSystemToChildInformationConverter}}">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20" Height="20" Stretch="Fill" Source="Images/folder.png" />
+                <TextBlock Text="{Binding Name}" Margin="5,0,0,0" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+
+    <Grid Background="AliceBlue">
+        <!-- TREE NAVIGATION -->
+        <TreeView ItemsSource="{Binding Drives}" 
+                  Background="White"
+                  Margin="6,6,415,65" />
+
+        <!-- FOLDERS LIST-->
+        <ListBox Background="White" 
+                 Margin="135,6,6,65">
+
+        </ListBox>
+        <Label Content="Path:" Margin="6,0,421,35" VerticalAlignment="Bottom" HorizontalContentAlignment="Right" />
+        <TextBox Margin="135,0,6,36" Name="textBox1" VerticalAlignment="Bottom" />
+        <Button Content="Select" HorizontalAlignment="Right" Margin="0,0,87,7" VerticalAlignment="Bottom" />
+        <Button Content="Cancel" Margin="0,0,6,7" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+    </Grid>
+</UserControl>

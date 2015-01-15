@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="ToolsManager.Client.Views.ParametersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:converters="clr-namespace:ToolsManager.Client.Converters"
+             xmlns:selectors="clr-namespace:ToolsManager.Client.Selectors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             Width="Auto" Height="Auto" MinWidth="550" MinHeight="250">
+
+    <UserControl.Resources>
+        <converters:BooleanValueConverter x:Key="booleanValueConverter"/>
+        <converters:FilePathValueConverter x:Key="filePathValueConverter"/>
+
+        <!-- BOOLEAN EDITOR -->
+        <DataTemplate x:Key="BooleanDataTemplate">
+            <CheckBox IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource booleanValueConverter}}" Margin="2" />
+        </DataTemplate>
+
+        <!-- INTEGER EDITOR -->
+        <DataTemplate x:Key="IntegerDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+        </DataTemplate>
+
+        <!-- DOUBLE EDITOR -->
+        <DataTemplate x:Key="DecimalDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+        </DataTemplate>
+
+        <!-- STRING EDITOR -->
+        <DataTemplate x:Key="StringDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+        </DataTemplate>
+
+        <!-- PASSWORD EDITOR -->
+        <DataTemplate x:Key="PasswordDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+        </DataTemplate>
+
+        <!-- COLLECTION EDITOR -->
+        <DataTemplate x:Key="CollectionDataTemplate">
+            <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterComboBox}"/>
+        </DataTemplate>
+
+        <!-- FILEPATH EDITOR -->
+        <DataTemplate x:Key="FilePathDataTemplate">
+            <DockPanel LastChildFill="True">
+                <Button Content="..." DockPanel.Dock="Right" Width="20" Margin="2"
+                        Command="{Binding Path=DataContext.BrowseFilePathCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                        CommandParameter="{Binding ElementName=filePath}"/>
+                <TextBox x:Name="filePath" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+            </DockPanel>
+        </DataTemplate>
+
+        <!-- FOLDERPATH EDITOR -->
+        <DataTemplate x:Key="FolderPathDataTemplate">
+            <DockPanel LastChildFill="True">
+                <Button Content="..." DockPanel.Dock="Right" Width="20" Margin="2"
+                        Command="{Binding Path=DataContext.BrowseFolderPathCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                        CommandParameter="{Binding ElementName=folderPath}"/>
+                <TextBox x:Name="folderPath" Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource parameterTextBox}"/>
+            </DockPanel>
+        </DataTemplate>
+
+        <selectors:EditorDataTemplateSelector x:Key="editorDataTemplateSelector"/>
+
+        <DataTemplate x:Key="keyColumnDataTemplate">
+            <Label Content="{Binding Key}" HorizontalContentAlignment="Right"/>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <DataGrid ItemsSource="{Binding Parameters}"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="false"
+                  CanUserDeleteRows="false"
+                  Margin="6">
+        <DataGrid.Columns>
+            <DataGridTemplateColumn Width="2*" Header="{loc:Translate Key=UI_PARAMETER}"
+                                    IsReadOnly="True"
+                                    CellTemplate="{StaticResource keyColumnDataTemplate}"
+                                    CellStyle="{StaticResource readOnlyDataGridCell}"/>
+
+            <DataGridTemplateColumn Width="6*" Header="{loc:Translate Key=UI_VALUE}"
+                                    CellTemplateSelector="{StaticResource editorDataTemplateSelector}"
+                                    CellStyle="{StaticResource writableDataGridCell}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+
+</UserControl>

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Atlante.Presentation.Controls.ExpanderListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
+    <ItemsControl ItemsSource="{Binding Expanders}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Border Style="{StaticResource lightPanelShadowBorder}" 
+                        Margin="5">
+                    <Expander Header="{Binding Header}">
+                        <ListView ItemsSource="{Binding Items}"                                   
+                                  SelectionChanged="ListView_SelectionChanged"
+                                  Background="Transparent" BorderThickness="0"
+                                  Margin="2" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Description}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Expander>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+
+</UserControl>

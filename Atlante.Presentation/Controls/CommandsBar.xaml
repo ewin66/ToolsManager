@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Atlante.Presentation.Controls.CommandsBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Atlante.Presentation.Converters"
+             xmlns:selectors="clr-namespace:Atlante.Presentation.Selectors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="30" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converters:NameToIconConverter x:Key="nameToIconConverter"/>
+
+        <DataTemplate x:Key="commandButtonTemplate">
+            <Button Command="{Binding}"
+                        ToolTip="{Binding ToolTip}"
+                        Style="{StaticResource iconButton}"
+                        Focusable="False">
+                <StackPanel Margin="5,2,5,2">
+                    <Image Source="{Binding ImageName, Converter={StaticResource nameToIconConverter}}"
+                           Height="{Binding Path=DataContext.IconHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
+                           Width="{Binding Path=DataContext.IconWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" 
+                           HorizontalAlignment="Center"/>
+                    <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="commandSeparatorTemplate">
+            <Separator Style="{StaticResource verticalSeparator}"/>
+        </DataTemplate>
+
+        <selectors:CommandDataTemplateSelector x:Key="commandDataTemplateSelector"/>
+
+    </UserControl.Resources>
+
+    <ItemsControl Name="commands" ItemsSource="{Binding CommandsSource}"
+                  ItemTemplateSelector="{StaticResource commandDataTemplateSelector}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal" Background="{StaticResource lightLinearBackground}"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+    </ItemsControl>
+</UserControl>

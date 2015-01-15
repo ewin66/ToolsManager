@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="ToolsManager.DataServices.Server.FileUploadService" CodeBehind="FileUploadService.svc.cs" %>

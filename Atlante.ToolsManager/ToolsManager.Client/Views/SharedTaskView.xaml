@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ToolsManager.Client.Views.SharedTaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:controls="clr-namespace:Atlante.Presentation.Controls;assembly=Atlante.Presentation"
+             xmlns:viewModels="clr-namespace:ToolsManager.Client.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="200" d:DesignWidth="600">
+
+    <UserControl.DataContext>
+        <viewModels:SharedTaskViewModel/>
+    </UserControl.DataContext>
+
+    <DockPanel LastChildFill="True">
+
+        <controls:CommandsBar DockPanel.Dock="Top" CommandsSource="{Binding Path=DataContext.Commands, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+        <DataGrid ItemsSource="{Binding SharedTasks}" 
+                                  SelectedItem="{Binding SelectedSharedTask}"
+                                  AutoGenerateColumns="False"
+                                  IsSynchronizedWithCurrentItem="True"
+                                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="1*" Header="{loc:Translate Key=UI_CATEGORY}" Binding="{Binding ViewDescription}"/>
+                <DataGridTextColumn Width="3*" Header="{loc:Translate Key=UI_DESCRIPTION}" Binding="{Binding Task.Description}"/>
+                <DataGridTextColumn Width="1*" Header="{loc:Translate Key=UI_TASK}" Binding="{Binding Task.Category}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</UserControl>

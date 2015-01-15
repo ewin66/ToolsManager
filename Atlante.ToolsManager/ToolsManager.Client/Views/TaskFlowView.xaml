@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="ToolsManager.Client.Views.TaskFlowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:prBehaviors="clr-namespace:Atlante.Presentation.Behaviors;assembly=Atlante.Presentation"
+             xmlns:controls="clr-namespace:Atlante.Presentation.Controls;assembly=Atlante.Presentation"
+             xmlns:shapes="clr-namespace:Atlante.Presentation.Shapes;assembly=Atlante.Presentation"
+             xmlns:converters="clr-namespace:ToolsManager.Client.Converters"
+             xmlns:prConverters="clr-namespace:Atlante.Presentation.Converters;assembly=Atlante.Presentation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <prConverters:NameToIconConverter x:Key="nameToIconConverter"/>
+        <prConverters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+        <prConverters:DateTimeToDateStringConverter x:Key="dateTimeToDateString"/>
+        <prConverters:DateTimeToTimeStringConverter x:Key="dateTimeToTimeString"/>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource lightPanelShadowBorder}" Margin="5" prBehaviors:DragDataBehabior.IsDropEnabled="True">
+
+        <DockPanel LastChildFill="True">
+
+            <StackPanel DockPanel.Dock="Top">
+                <!-- Title -->
+                <Border Style="{StaticResource darkTitleBorder}" Margin="1">
+                    <Label Content="{loc:Translate Key=UI_TASKS}" Style="{StaticResource lightTitleStyle}"/>
+                </Border>
+
+                <!-- Commands -->
+                <controls:CommandsBar CommandsSource="{Binding Path=DataContext.Commands, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Width="100">Success Branch</Label>
+                    <ComboBox ItemsSource="{Binding Tasks}"
+                              SelectedItem="{Binding SelectedSuccessBranchTask}" SelectionChanged="SuccessTaskSelectionChanged"
+                              DisplayMemberPath="Description" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <Label Width="100">Error Branch</Label>
+                    <ComboBox ItemsSource="{Binding Tasks}"
+                              SelectedItem="{Binding SelectedErrorBranchTask}" SelectionChanged="ErrorTaskSelectionChanged"
+                              DisplayMemberPath="Description" Width="200"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Flow Tasks -->
+            <ItemsControl ItemsSource="{Binding Tasks}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas Height="Auto" Width="Auto"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <!-- CARD Template -->
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <shapes:ArrowLine X1="{Binding SourceSuccessPosX}" Y1="{Binding SourceSuccessPosY}" 
+                                  X2="{Binding TargetSuccessPosX}" Y2="{Binding TargetSuccessPosY}" Stroke="Green" StrokeThickness="2" 
+                                  Visibility="{Binding HasSuccessBranch, Converter={StaticResource boolToVisibilityConverter}}"/>
+
+                            <shapes:ArrowLine X1="{Binding SourceErrorPosX}" Y1="{Binding SourceErrorPosY}" 
+                                  X2="{Binding TargetErrorPosX}" Y2="{Binding TargetErrorPosY}" Stroke="Red" StrokeThickness="2" 
+                                  Visibility="{Binding HasErrorBranch, Converter={StaticResource boolToVisibilityConverter}}"/>
+
+							<Border Name="cardBorder" 
+                                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                                    Style="{StaticResource cardShadowBorder}" 
+                                    Height="75" Width="130"
+                                    prBehaviors:MovementBehavior.IsMovementEnabled="True">
+                                <DockPanel>
+                                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                                        <Image Height="48" Width="48" Source="{Binding ImageName, Converter={StaticResource nameToIconConverter}}" Margin="2"/>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding LastExecution, Converter={StaticResource dateTimeToDateString}}" FontSize="9" Margin="2"/>
+                                            <TextBlock Text="{Binding LastExecution, Converter={StaticResource dateTimeToTimeString}}" FontSize="9" Margin="2"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Description}" FontSize="9" Margin="2"/>
+                                </DockPanel>
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="{Binding PosX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                                                        Y="{Binding PosY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </Border.RenderTransform>
+                            </Border>
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Status}" Value="None">
+                                <Setter TargetName="cardBorder" Property="Background" Value="{StaticResource lightYellowLinearBackground}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="Success">
+                                <Setter TargetName="cardBorder" Property="Background" Value="{StaticResource lightGreenLinearBackground}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="Error">
+                                <Setter TargetName="cardBorder" Property="Background" Value="{StaticResource lightRedLinearBackground}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="Running">
+                                <Setter TargetName="cardBorder" Property="Background" Value="{StaticResource lightBlueLinearBackground}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                <Setter TargetName="cardBorder" Property="Style" Value="{StaticResource cardSelectedShadowBorder}"/>
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </Border>
+</UserControl>

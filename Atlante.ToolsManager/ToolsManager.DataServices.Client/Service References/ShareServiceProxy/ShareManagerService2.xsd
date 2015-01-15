@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://maxtor.bolivia.softwareandina.com/ToolsManagerServices/ShareManagerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://maxtor.bolivia.softwareandina.com/ToolsManagerServices/ShareManagerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" />
+  <xs:element name="ShareTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machineSource" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineTarget" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="viewId" type="q1:guid" />
+        <xs:element minOccurs="0" name="viewDescription" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" minOccurs="0" name="task" nillable="true" type="q2:TaskInfoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShareTaskResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnshareTask">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machineSource" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineTarget" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="viewId" type="q3:guid" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" minOccurs="0" name="task" nillable="true" type="q4:TaskInfoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnshareTaskResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSharedTasks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machineTarget" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSharedTasksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" minOccurs="0" name="GetSharedTasksResult" nillable="true" type="q5:ArrayOfSharedTaskDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

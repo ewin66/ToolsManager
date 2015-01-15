@@ -1,0 +1,445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{49B594B0-C45D-4877-92C5-4AA40BC997C1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ToolsManager.Client</RootNamespace>
+    <AssemblyName>ToolsManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>http://localhost/ToolsManagerUpdater/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>ToolsManager</ProductName>
+    <PublisherName>Daily Tools</PublisherName>
+    <SuiteName>ToolsManager</SuiteName>
+    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ToolsManagerDepoyment.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>80E0B2BEFACE327973567A7FE76DA8C98E039601</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ToolsManager.Client_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.0.30714, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\References\ThirdParty\Log4Net\1.2.11\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Adorners\ConnectorAdorner.cs" />
+    <Compile Include="Converters\DateTimeToShortStringConverter.cs" />
+    <Compile Include="Converters\DateTimeToLongStringConverter.cs" />
+    <Compile Include="Converters\FilePathValueConverter.cs" />
+    <Compile Include="Converters\MessageCountConverter.cs" />
+    <Compile Include="Converters\MessageIconConverter.cs" />
+    <Compile Include="Converters\MessageListConverter.cs" />
+    <Compile Include="Converters\BooleanValueConverter.cs" />
+    <Compile Include="Converters\ParameterValueConverter.cs" />
+    <Compile Include="Converters\StatusToColorConverter.cs" />
+    <Compile Include="Extensions\ParameterExtensions.cs" />
+    <Compile Include="Forms\ContentForm.xaml.cs">
+      <DependentUpon>ContentForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\WindowExtension.cs" />
+    <Compile Include="Forms\ListOptionsForm.xaml.cs">
+      <DependentUpon>ListOptionsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\AppInfo.cs" />
+    <Compile Include="Observers\ScheduleObserver.cs" />
+    <Compile Include="Observers\SharedTaskObserver.cs" />
+    <Compile Include="Selectors\EditorDataTemplateSelector.cs" />
+    <Compile Include="Extensions\BindingExtensions.cs" />
+    <Compile Include="Forms\DownloadOptionsForm.xaml.cs">
+      <DependentUpon>DownloadOptionsForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddInsViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\BottomPanelViewModel.cs" />
+    <Compile Include="ViewModels\MachinesViewModel.cs" />
+    <Compile Include="ViewModels\MessagesViewModel.cs" />
+    <Compile Include="ViewModels\ParametersViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
+    <Compile Include="ViewModels\TaskFlowViewModel.cs" />
+    <Compile Include="ViewModels\TaskScheduleViewModel.cs" />
+    <Compile Include="ViewModels\TaskTableViewModel.cs" />
+    <Compile Include="ViewModels\SharedTaskViewModel.cs" />
+    <Compile Include="ViewModels\TaskViewModel.cs" />
+    <Compile Include="ViewModels\ToolsViewModel.cs" />
+    <Compile Include="ViewModels\VariablesViewModel.cs" />
+    <Compile Include="ViewModels\ViewTemplateViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\BottomPanelView.xaml.cs">
+      <DependentUpon>BottomPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommandButtonsView.xaml.cs">
+      <DependentUpon>CommandButtonsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MachinesView.xaml.cs">
+      <DependentUpon>MachinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MessagesView.xaml.cs">
+      <DependentUpon>MessagesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ParametersView.xaml.cs">
+      <DependentUpon>ParametersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskFlowView.xaml.cs">
+      <DependentUpon>TaskFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskScheduleView.xaml.cs">
+      <DependentUpon>TaskScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TaskView.xaml.cs">
+      <DependentUpon>TaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SharedTaskView.xaml.cs">
+      <DependentUpon>SharedTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextVisualizerView.xaml.cs">
+      <DependentUpon>TextVisualizerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToolsView.xaml.cs">
+      <DependentUpon>ToolsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewTemplateEntryView.xaml.cs">
+      <DependentUpon>ViewTemplateEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewTemplateView.xaml.cs">
+      <DependentUpon>ViewTemplateView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Forms\ContentForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\DownloadOptionsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\ListOptionsForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Templates\Common.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ContextMenuTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ParameterEditorTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BottomPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CommandButtonsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MachinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MessagesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ParametersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskFlowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SharedTaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TextVisualizerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ToolsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewTemplateEntryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewTemplateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="ToolsManager.Client_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Atlante.Common\Atlante.Common.csproj">
+      <Project>{D2F65F40-4968-4A6A-B9D4-F1C54FA20FD8}</Project>
+      <Name>Atlante.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atlante.Localization\Atlante.Localization.csproj">
+      <Project>{36E464A9-473A-42FC-A584-E8211453B089}</Project>
+      <Name>Atlante.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atlante.Presentation\Atlante.Presentation.csproj">
+      <Project>{29E6E365-DA53-4C62-B6D9-9E017ACC3F56}</Project>
+      <Name>Atlante.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsManager.DataModel.Common\ToolsManager.DataModel.Common.csproj">
+      <Project>{A4502EC5-3E99-4A89-A279-F48EB9DDF125}</Project>
+      <Name>ToolsManager.DataModel.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsManager.DataServices.Client\ToolsManager.DataServices.Client.csproj">
+      <Project>{DC73B2CD-9553-41D2-8EE2-8418CB401F98}</Project>
+      <Name>ToolsManager.DataServices.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Atlante.Mef\Atlante.Mef.csproj">
+      <Project>{E4A2B83C-5351-4A5B-A9D7-F053C9BA948C}</Project>
+      <Name>Atlante.Mef</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Diagrams\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ToolsManager.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error.png" />
+    <Resource Include="Images\information.png" />
+    <Resource Include="Images\messages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\group_add.png" />
+    <Resource Include="Images\group_delete.png" />
+    <Resource Include="Images\group_edit.png" />
+    <Resource Include="Images\group_send.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copy.png" />
+    <Resource Include="Images\cut.png" />
+    <Resource Include="Images\paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\clearMessages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="en-US\LocalizedMessages.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="ToolsManagerDepoyment.ico" />
+    <Resource Include="Images\ToolsManagerDepoyment.ico" />
+    <Resource Include="Images\AppPool.png" />
+    <Resource Include="Images\singleSelection.png" />
+    <Resource Include="Images\multipleSelection.png" />
+    <Resource Include="Images\alignBottom.png" />
+    <Resource Include="Images\alignLeft.png" />
+    <Resource Include="Images\viewDetails.png" />
+    <Resource Include="Images\viewFlow.png" />
+    <Resource Include="Images\openLink.png" />
+    <Resource Include="Images\openFile.png" />
+    <Resource Include="Images\mergeFiles.png" />
+    <Resource Include="Images\runService.png" />
+    <Resource Include="Images\openProject.png" />
+    <Resource Include="Images\executeApplication.png" />
+    <Resource Include="Images\copyfile.png" />
+    <Resource Include="Images\copydirectory.png" />
+    <Resource Include="Images\viewer24x24.png" />
+    <Resource Include="Images\schedule24x24.png" />
+    <Resource Include="Images\messages16x16.png" />
+    <Resource Include="Images\messagesOff16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\delete24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\accept24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\execute24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\save24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\share24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\share16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\editTable24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="es-ES\LocalizedMessages.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

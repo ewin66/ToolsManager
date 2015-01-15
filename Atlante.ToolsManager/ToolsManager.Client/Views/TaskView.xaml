@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="ToolsManager.Client.Views.TaskView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:entities="clr-namespace:ToolsManager.DataServices.Client;assembly=ToolsManager.DataServices.Client"
+             xmlns:controls="clr-namespace:Atlante.Presentation.Controls;assembly=Atlante.Presentation"
+             xmlns:dataModel="clr-namespace:ToolsManager.DataModel.Common;assembly=ToolsManager.DataModel.Common"
+             xmlns:converters="clr-namespace:ToolsManager.Client.Converters"
+             xmlns:prConverters="clr-namespace:Atlante.Presentation.Converters;assembly=Atlante.Presentation"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="700">
+    <UserControl.Resources>
+
+        <prConverters:NameToIconConverter x:Key="nameToIconConverter"/>
+        <converters:DateTimeToLongStringConverter x:Key="dateTimeToLongString"/>
+        <converters:StatusToColorConverter x:Key="statusToColorConverter"/>
+
+        <DataTemplate x:Key="parametersTemplate">
+            <Button Width="24" Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OpenParametersCommand}"
+                    Style="{StaticResource iconButton}">
+                <Image Source="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.OpenParametersCommand.ImageName, Converter={StaticResource nameToIconConverter}}"/>
+            </Button>
+        </DataTemplate>
+
+        <DataTemplate x:Key="categoryTemplate">
+            <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=DataContext.EnabledTools}"  
+                      SelectedValue="{Binding Category, Mode=TwoWay, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" />
+        </DataTemplate>
+        
+        <DataTemplate x:Key="statusTemplate">
+            <TextBlock Text="{Binding Status}" Background="{Binding Status, Mode=OneWay, Converter={StaticResource statusToColorConverter}}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Border Style="{StaticResource lightPanelShadowBorder}" Margin="5">
+
+        <DockPanel LastChildFill="True">
+
+            <StackPanel DockPanel.Dock="Top">
+                <!-- Title -->
+                <Border Style="{StaticResource darkTitleBorder}" Margin="1">
+                    <Label Content="{loc:Translate Key=UI_TASKS}" Style="{StaticResource lightTitleStyle}"/>
+                </Border>
+
+                <!-- Commands -->
+                <controls:CommandsBar CommandsSource="{Binding Path=DataContext.Commands, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+            </StackPanel>
+
+            <!-- Tasks -->
+            <DataGrid Name="dataGrid" 
+                      ItemsSource="{Binding Tasks}"
+                      AutoGenerateColumns="False"
+                      SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
+                      CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Width="2*" Header="{loc:Translate Key=UI_TASK}" CellTemplate="{StaticResource categoryTemplate}"/>
+                    <DataGridTextColumn Width="15*" Header="{loc:Translate Key=UI_DESCRIPTION}" Binding="{Binding Description, Mode=TwoWay}"/>
+                    <DataGridTemplateColumn Width="65" Header="{loc:Translate Key=UI_STATUS}" CellTemplate="{StaticResource statusTemplate}" IsReadOnly="True"/>
+                    <DataGridTextColumn Width="120" Header="{loc:Translate Key=UI_TIME}" Binding="{Binding LastExecution, Converter={StaticResource dateTimeToLongString}}" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Width="35" Header="" CellTemplate="{StaticResource parametersTemplate}"/>
+                </DataGrid.Columns>
+
+                <DataGrid.ItemContainerStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                    </Style>
+                </DataGrid.ItemContainerStyle>
+            </DataGrid>
+        </DockPanel>
+
+    </Border>
+</UserControl>

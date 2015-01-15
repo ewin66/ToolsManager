@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ToolsManager.DataServices.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://maxtor.bolivia.softwareandina.com/ToolsManagerServices/ShareManagerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="TaskInfoDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_Category_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Description_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Id_x003E_k__BackingField" type="ser:guid" />
+      <xs:element name="_x003C_Parameters_x003E_k__BackingField" nillable="true" type="tns:ParametersDTO" />
+      <xs:element name="_x003C_Schedule_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaskInfoDTO" nillable="true" type="tns:TaskInfoDTO" />
+  <xs:complexType name="ParametersDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Items" nillable="true" type="tns:ArrayOfParameterDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ParametersDTO" nillable="true" type="tns:ParametersDTO" />
+  <xs:complexType name="ArrayOfParameterDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ParameterDTO" nillable="true" type="tns:ParameterDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfParameterDTO" nillable="true" type="tns:ArrayOfParameterDTO" />
+  <xs:complexType name="ParameterDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_DefaultValue_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_IsSystem_x003E_k__BackingField" type="xs:boolean" />
+      <xs:element name="_x003C_Key_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ParameterType_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Value_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ParameterDTO" nillable="true" type="tns:ParameterDTO" />
+  <xs:complexType name="ArrayOfSharedTaskDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SharedTaskDTO" nillable="true" type="tns:SharedTaskDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSharedTaskDTO" nillable="true" type="tns:ArrayOfSharedTaskDTO" />
+  <xs:complexType name="SharedTaskDTO">
+    <xs:sequence>
+      <xs:element name="_x003C_MachineSource_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_MachineTarget_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Task_x003E_k__BackingField" nillable="true" type="tns:TaskInfoDTO" />
+      <xs:element name="_x003C_ViewDescription_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ViewId_x003E_k__BackingField" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SharedTaskDTO" nillable="true" type="tns:SharedTaskDTO" />
+</xs:schema>

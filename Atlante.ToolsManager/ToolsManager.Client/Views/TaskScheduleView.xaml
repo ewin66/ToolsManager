@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ToolsManager.Client.Views.TaskScheduleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:local="clr-namespace:ToolsManager.Client"
+             xmlns:converters="clr-namespace:ToolsManager.Client.Converters"
+             xmlns:controls="clr-namespace:Atlante.Presentation.Controls;assembly=Atlante.Presentation"
+             xmlns:dataModel="clr-namespace:ToolsManager.DataModel.Common;assembly=ToolsManager.DataModel.Common"
+             Width="Auto" Height="Auto" MinWidth="242" MinHeight="50">
+
+    <UserControl.Resources>
+        <converters:DateTimeToShortStringConverter x:Key="dateTimeToShortStringConverter"/>
+    </UserControl.Resources>
+    
+    <Grid DataContext="{Binding Schedule}">
+        <Label Content="{loc:Translate Key=UI_DATE}" Margin="6,6,0,0" HorizontalContentAlignment="Left" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="55" />
+        <TextBox Text="{Binding Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource dateTimeToShortStringConverter}}" Margin="70,6,0,0" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="87" />
+        <controls:TimeTextBox Time="{Binding Time, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="163,6,0,0" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Width="74" />
+        <CheckBox IsChecked="{Binding IsEnabled, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Content="{loc:Translate Key=UI_SCHEDULE_ENABLED}" Margin="6,40,0,0" HorizontalContentAlignment="Right" VerticalContentAlignment="Top" VerticalAlignment="Top" HorizontalAlignment="Left" />
+    </Grid>
+</UserControl>

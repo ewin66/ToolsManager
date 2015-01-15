@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{29E6E365-DA53-4C62-B6D9-9E017ACC3F56}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Atlante.Presentation</RootNamespace>
+    <AssemblyName>Atlante.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behaviors\DataGridFilterBehavior.cs" />
+    <Compile Include="Behaviors\DataGridFinderBehavior.cs" />
+    <Compile Include="Behaviors\DragDataBehabior.cs" />
+    <Compile Include="Behaviors\MovementBehavior.cs" />
+    <Compile Include="Controls\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CollapsablePanelsBar.xaml.cs">
+      <DependentUpon>CollapsablePanelsBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CommandsBar.xaml.cs">
+      <DependentUpon>CommandsBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ContentForm.xaml.cs">
+      <DependentUpon>ContentForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExpanderListView.xaml.cs">
+      <DependentUpon>ExpanderListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FilterBox.xaml.cs">
+      <DependentUpon>FilterBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MenuList.cs" />
+    <Compile Include="Controls\PropertiesEditor.xaml.cs">
+      <DependentUpon>PropertiesEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SelectableListView.xaml.cs">
+      <DependentUpon>SelectableListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\DateTimeToTimeStringConverter.cs" />
+    <Compile Include="Converters\DateTimeToDateStringConverter.cs" />
+    <Compile Include="Interfaces\ICollapsablePanel.cs" />
+    <Compile Include="Interfaces\IExpanderContainer.cs" />
+    <Compile Include="Interfaces\IExpanderList.cs" />
+    <Compile Include="Interfaces\IFilterList.cs" />
+    <Compile Include="Interfaces\IStatusInfo.cs" />
+    <Compile Include="Interfaces\ITextFinder.cs" />
+    <Compile Include="Objects\ExpanderContainer.cs" />
+    <Compile Include="Objects\ExpanderItem.cs" />
+    <Compile Include="Objects\ExpanderList.cs" />
+    <Compile Include="Objects\SelectableItem.cs" />
+    <Compile Include="Shapes\ArrowLine.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
+    <Compile Include="Views\StatusbarView.xaml.cs">
+      <DependentUpon>StatusbarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BooleanValueConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\FileSystemToChildInformationConverter.cs" />
+    <Compile Include="Converters\NameToIconConverter.cs" />
+    <Compile Include="Enums\ActionType.cs" />
+    <Compile Include="Enums\PropertyEditorType.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="FolderDialog.xaml.cs">
+      <DependentUpon>FolderDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IDragData.cs" />
+    <Compile Include="Interfaces\IPropertiesEditor.cs" />
+    <Compile Include="Interfaces\IProperty.cs" />
+    <Compile Include="Markups\EnumerationExtension.cs" />
+    <Compile Include="Objects\Property.cs" />
+    <Compile Include="OpenFolderDialog.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Controls\TimeTextBox.cs" />
+    <Compile Include="Selectors\CommandDataTemplateSelector.cs" />
+    <Compile Include="Selectors\EditorDataTemplateSelector.cs" />
+    <Compile Include="Utils\TreeFinder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CollapsablePanelsBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CommandsBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ContentForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ExpanderListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FilterBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PropertiesEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SelectableListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatusbarView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="FolderDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\BlackTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\BlueTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\diskdrive.png" />
+    <Resource Include="Images\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\pin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Atlante.Common\Atlante.Common.csproj">
+      <Project>{d2f65f40-4968-4a6a-b9d4-f1c54fa20fd8}</Project>
+      <Name>Atlante.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlante.Localization\Atlante.Localization.csproj">
+      <Project>{36e464a9-473a-42fc-a584-e8211453b089}</Project>
+      <Name>Atlante.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atlante.Mef\Atlante.Mef.csproj">
+      <Project>{e4a2b83c-5351-4a5b-a9d7-f053c9ba948c}</Project>
+      <Name>Atlante.Mef</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

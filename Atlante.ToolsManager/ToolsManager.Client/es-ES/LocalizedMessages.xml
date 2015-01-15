@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ToolsManager>
+  <Message Key="UI_ABOUT" Text="Acerca de"/>
+  <Message Key="UI_ACCEPT" Text="Aceptar"/>
+  <Message Key="UI_ACCEPT_TASK" Text="Aceptar tarea"/>
+  <Message Key="UI_ACTION_SHARE_TASK" Text="Compartiendo tareas"/>
+  <Message Key="UI_ACTION_LOAD_DATA" Text="Cargando datos"/>
+  <Message Key="UI_ACTION_REFRESH_DATA" Text="Actualizando datos"/>
+  <Message Key="UI_ADD" Text="Nuevo"/>
+  <Message Key="UI_ADD_TASK" Text="Nueva tarea"/>
+  <Message Key="UI_ADDINS" Text="Complementos"/>
+  <Message Key="UI_ALIGN_BOTTOM" Text="Alinear Abajo"/>
+  <Message Key="UI_ALIGN_LEFT" Text="Alinear Izquierda"/>  
+  <Message Key="UI_CANCEL" Text="Cancelar"/>
+  <Message Key="UI_CATEGORY" Text="Categoria"/>
+  <Message Key="UI_CATEGORIES" Text="Categorias"/>
+  <Message Key="UI_CLOSE" Text="Cerrar"/>
+  <Message Key="UI_CONFIGURATION" Text="Configuración"/>
+  <Message Key="UI_CONFIGURATION_FILE" Text="Archivo de configuración"/>
+  <Message Key="UI_COPY" Text="Copiar"/>
+  <Message Key="UI_DAYS" Text="Dias"/>
+  <Message Key="UI_DAILY" Text="Diario"/>
+  <Message Key="UI_DATE" Text="Fecha"/>
+  <Message Key="UI_DESCRIPTION" Text="Descripción"/>
+  <Message Key="UI_DISCARD_FILES" Text="Descartar archivos"/>
+  <Message Key="UI_DOWNLOAD_OPTIONS" Text="Opciones de descarga"/>
+  <Message Key="UI_EXECUTE" Text="Ejecutar"/>
+  <Message Key="UI_EXECUTE_TASK" Text="Ejecutar tarea"/>
+  <Message Key="UI_FREQUENCY" Text="Frecuencia"/>
+  <Message Key="UI_HELP" Text="Ayuda"/>
+  <Message Key="UI_MACHINES" Text="Maquinas"/>
+  <Message Key="UI_MACHINE_NAME" Text="Maquina"/>
+  <Message Key="UI_MACHINE_OWNER" Text="Propietario"/>
+  <Message Key="UI_MESSAGES" Text="Mensajes"/>
+  <Message Key="UI_MESSAGE_LIST" Text="Lista de mensajes"/>
+  <Message Key="UI_MULTIPLE_SELECTION" Text="Seleccion multiple"/>
+  <Message Key="UI_LANGUAGE" Text="Idioma"/>
+  <Message Key="UI_OK" Text="Aceptar"/>
+  <Message Key="UI_ONE_TIME" Text="Una vez"/>
+  <Message Key="UI_OPTIONS" Text="Opciones"/>
+  <Message Key="UI_OVERWRITE_FILES" Text="Sobrescribir archivos"/>
+  <Message Key="UI_PARAMETER" Text="Parametro"/>
+  <Message Key="UI_PARAMETERS" Text="Parametros"/>
+  <Message Key="UI_PASTE" Text="Pegar"/>
+  <Message Key="UI_PROPERTY" Text="Propiedad"/>
+  <Message Key="UI_PASTE_TASK" Text="Pegar tarea"/>
+  <Message Key="UI_QUESTION_DOWNLOADED_FILES" Text="Que desea hacer con los archivos descargados?"/>
+  <Message Key="UI_RECUR_EVERY" Text="Repetir cada"/>
+  <Message Key="UI_REFRESH" Text="Actualizar"/>
+  <Message Key="UI_REFRESH_LIST" Text="Actualizar lista"/>
+  <Message Key="UI_REMOVE" Text="Remover"/>
+  <Message Key="UI_REMOVE_TASK" Text="Remover tarea"/>
+  <Message Key="UI_SAVE" Text="Guardar"/>
+  <Message Key="UI_SAVE_CHANGES" Text="Guardar cambios"/>
+  <Message Key="UI_SCHEDULE" Text="Programar"/>
+  <Message Key="UI_SCHEDULE_TASK" Text="Programar tarea"/>
+  <Message Key="UI_SCHEDULE_ENABLED" Text="Habilitar Programación de tarea"/>
+  <Message Key="UI_SELECT" Text="Seleccionar"/>
+  <Message Key="UI_SETTINGS" Text="Configuración"/>
+  <Message Key="UI_SHARE" Text="Compartir"/>
+  <Message Key="UI_SHARE_TASK" Text="Compartir tarea"/>
+  <Message Key="UI_SHARED_TASKS" Text="Tareas compartidas"/>
+  <Message Key="UI_SINGLE_SELECTION" Text="Selection simple"/>
+  <Message Key="UI_START" Text="Inicio"/>
+  <Message Key="UI_STATUS" Text="Estado"/>
+  <Message Key="UI_TASK" Text="Tarea"/>
+  <Message Key="UI_TASKS" Text="Tareas"/>
+  <Message Key="UI_TASK_SCHEDULE" Text="Agendar tarea"/>
+  <Message Key="UI_TEXT_VISUALIZER" Text="Visualizador de texto"/>
+  <Message Key="UI_THEME" Text="Apariencia"/>
+  <Message Key="UI_TIME" Text="Hora"/>
+  <Message Key="UI_TYPE" Text="Tipo"/>
+  <Message Key="UI_USE_MERGE_APPLICATION" Text="Usar una applicación para ver diferencia uno por uno"/>
+  <Message Key="UI_VALUE" Text="Valor"/>
+  <Message Key="UI_VARIABLES" Text="Variables"/>
+  <Message Key="UI_VIEW" Text="Vista"/>
+  <Message Key="UI_VIEW_DETAILS" Text="Vista de Detalle"/>
+  <Message Key="UI_VIEW_FLOW" Text="View de Flujo"/>
+  <Message Key="UI_WEEKLY" Text="Semanalmente"/>  
+</ToolsManager>

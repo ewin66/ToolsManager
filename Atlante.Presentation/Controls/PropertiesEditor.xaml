@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="Atlante.Presentation.Controls.PropertiesEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+             xmlns:selectors="clr-namespace:Atlante.Presentation.Selectors"
+             xmlns:converters="clr-namespace:Atlante.Presentation.Converters"
+             Width="Auto" Height="Auto" MinWidth="550" MinHeight="250">
+
+    <UserControl.Resources>
+        <converters:BooleanValueConverter x:Key="booleanValueConverter"/>
+
+        <!-- Editor Selector -->
+        <selectors:EditorDataTemplateSelector x:Key="editorDataTemplateSelector"/>
+
+        <!-- KEY Column-->
+        <DataTemplate x:Key="keyColumnDataTemplate">
+            <Label Content="{Binding Key}" HorizontalContentAlignment="Right" Focusable="False"/>
+        </DataTemplate>
+
+        <!-- Editors -->
+        <DataTemplate x:Key="BooleanEditorDataTemplate">
+            <CheckBox IsChecked="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource booleanValueConverter}}" Margin="2" 
+                      Checked="PropertyCheckedChanged"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="IntegerEditorDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Style="{StaticResource parameterTextBox}"
+                     IsReadOnly="{Binding Path=DataContext.ReadOnlyProperties, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                     TextChanged="PropertyTextChanged"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DecimalEditorDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Style="{StaticResource parameterTextBox}"
+                     IsReadOnly="{Binding Path=DataContext.ReadOnlyProperties, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                     TextChanged="PropertyTextChanged"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="StringEditorDataTemplate">
+            <TextBox Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Style="{StaticResource parameterTextBox}"
+                     IsReadOnly="{Binding Path=DataContext.ReadOnlyProperties, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"
+                     TextChanged="PropertyTextChanged"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="CollectionEditorDataTemplate">
+            <ComboBox ItemsSource="{Binding Options}" SelectedItem="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      Style="{StaticResource parameterComboBox}"
+                      IsReadOnly="{Binding Path=DataContext.ReadOnlyProperties, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <!-- Properties -->
+    <DataGrid ItemsSource="{Binding Properties}"
+              AutoGenerateColumns="False"
+              CanUserAddRows="false"
+              CanUserDeleteRows="false" 
+              Margin="2" Focusable="False"
+              SelectionChanged="PropertySelectionChanged">
+        <DataGrid.Columns>
+            <DataGridTemplateColumn Width="2*" Header="{loc:Translate Key=UI_PROPERTY}"
+                                    IsReadOnly="True"
+                                    CellTemplate="{StaticResource keyColumnDataTemplate}"
+                                    CellStyle="{StaticResource readOnlyDataGridCell}"/>
+
+            <DataGridTemplateColumn Width="6*" Header="{loc:Translate Key=UI_VALUE}"
+                                    CellTemplateSelector="{StaticResource editorDataTemplateSelector}"
+                                    CellStyle="{StaticResource writableDataGridCell}"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</UserControl>

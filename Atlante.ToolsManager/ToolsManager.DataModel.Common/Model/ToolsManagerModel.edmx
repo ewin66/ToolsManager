@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DbModelStoreContainer">
+          <EntitySet Name="TaskInfo" EntityType="DbModel.Store.TaskInfo" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ViewTemplate" EntityType="DbModel.Store.ViewTemplate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_TaskInfo_ViewTemplate" Association="DbModel.Store.FK_TaskInfo_ViewTemplate">
+            <End Role="ViewTemplate" EntitySet="ViewTemplate" />
+            <End Role="TaskInfo" EntitySet="TaskInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TaskInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastExecution" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="ViewTemplateId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ViewTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_TaskInfo_ViewTemplate">
+          <End Role="ViewTemplate" Type="DbModel.Store.ViewTemplate" Multiplicity="1" />
+          <End Role="TaskInfo" Type="DbModel.Store.TaskInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskInfo">
+              <PropertyRef Name="ViewTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true" ib10:DevForceEnabled="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:ib10="http://www.ideablade.com/edm/2010">
+          <EntitySet Name="TaskInfoes" EntityType="DbModel.TaskInfo" />
+          <EntitySet Name="ViewTemplates" EntityType="DbModel.ViewTemplate" />
+          <AssociationSet Name="FK_TaskInfo_ViewTemplate" Association="DbModel.FK_TaskInfo_ViewTemplate">
+            <End Role="ViewTemplate" EntitySet="ViewTemplates" />
+            <End Role="TaskInfo" EntitySet="TaskInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TaskInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastExecution" />
+          <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ViewTemplateId" Nullable="false" />
+          <NavigationProperty Name="ViewTemplate" Relationship="DbModel.FK_TaskInfo_ViewTemplate" FromRole="TaskInfo" ToRole="ViewTemplate" />
+        </EntityType>
+        <EntityType Name="ViewTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaskInfoes" Relationship="DbModel.FK_TaskInfo_ViewTemplate" FromRole="ViewTemplate" ToRole="TaskInfo" />
+        </EntityType>
+        <Association Name="FK_TaskInfo_ViewTemplate">
+          <End Type="DbModel.ViewTemplate" Role="ViewTemplate" Multiplicity="1" />
+          <End Type="DbModel.TaskInfo" Role="TaskInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ViewTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskInfo">
+              <PropertyRef Name="ViewTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DbModelStoreContainer" CdmEntityContainer="DbEntities">
+        <EntitySetMapping Name="TaskInfoes">
+            <EntityTypeMapping TypeName="DbModel.TaskInfo">
+              <MappingFragment StoreEntitySet="TaskInfo">
+                <ScalarProperty Name="ViewTemplateId" ColumnName="ViewTemplateId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastExecution" ColumnName="LastExecution" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewTemplates">
+            <EntityTypeMapping TypeName="DbModel.ViewTemplate">
+              <MappingFragment StoreEntitySet="ViewTemplate">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ToolsManagerModel">
+        <EntityTypeShape EntityType="DbModel.TaskInfo" Width="1.5" PointX="5.625" PointY="0.625" Height="1.9802864583333335" />
+        <EntityTypeShape EntityType="DbModel.ViewTemplate" Width="1.5" PointX="1.25" PointY="0.75" Height="1.5956835937499996" />
+        <AssociationConnector Association="DbModel.FK_TaskInfo_ViewTemplate">
+          <ConnectorPoint PointX="2.75" PointY="1.6439925130208333" />
+          <ConnectorPoint PointX="5.625" PointY="1.6439925130208333" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

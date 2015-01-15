@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Atlante.Presentation.Controls.FilterBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <ToggleButton x:Name="btnHeader" 
+                      Content="{Binding Header}" 
+                      IsChecked="{Binding IsChecked}"
+                      Height="23" Margin="0,0,0,2"/>
+
+        <Popup IsOpen="{Binding ElementName=btnHeader, Path=IsChecked }" 
+               StaysOpen="False">
+            <ListBox ItemsSource="{Binding FilterSource}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Description}" IsChecked="{Binding IsSelected}" 
+                                  Checked="CheckedChanged" Unchecked="CheckedChanged"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Popup>
+    </Grid>
+</UserControl>

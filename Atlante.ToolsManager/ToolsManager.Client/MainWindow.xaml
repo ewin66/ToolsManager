@@ -1,0 +1,64 @@
+﻿<Window x:Class="ToolsManager.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:Atlante.Localization;assembly=Atlante.Localization"
+        xmlns:common="clr-namespace:Atlante.Common;assembly=Atlante.Common"
+        xmlns:views="clr-namespace:ToolsManager.Client.Views"
+        xmlns:prViews="clr-namespace:Atlante.Presentation.Views;assembly=Atlante.Presentation"
+        xmlns:prControls="clr-namespace:Atlante.Presentation.Controls;assembly=Atlante.Presentation"
+        xmlns:viewModels="clr-namespace:ToolsManager.Client.ViewModels"
+        xmlns:converters="clr-namespace:Atlante.Presentation.Converters;assembly=Atlante.Presentation"
+        Title="Tools Manager" 
+        MinHeight="600" MinWidth="800" WindowState="Maximized" Activated="Window_Activated" StateChanged="Window_StateChanged" >
+
+    <Window.Resources>
+        <converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
+    </Window.Resources>
+
+    <DockPanel LastChildFill="True">
+
+        <!-- Menu -->
+        <Menu DockPanel.Dock="Top">
+            <prControls:MenuList Header="{loc:Translate Key=UI_VIEW}">
+                <MenuItem Header="{Binding MachinesCommand.DisplayName}" Command="{Binding MachinesCommand}"/>
+                <MenuItem Header="{Binding ViewTemplatesCommand.DisplayName}" Command="{Binding ViewTemplatesCommand}"/>
+            </prControls:MenuList>
+            <MenuItem Header="{loc:Translate Key=UI_CONFIGURATION}">
+                <MenuItem Header="{Binding SettingsCommand.DisplayName}" Command="{Binding SettingsCommand}"/>
+				<MenuItem Header="{Binding VariablesCommand.DisplayName}" Command="{Binding VariablesCommand}"/>
+            </MenuItem>
+            <MenuItem Header="{loc:Translate Key=UI_ADDINS}" ItemsSource="{Binding AddInsVM.AddIns}">
+                <MenuItem.ItemTemplate>
+                    <DataTemplate>
+                        <MenuItem Header="{Binding ApplicationName}"                                  
+                                  Command="{Binding Path=DataContext.SelectAddInCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Menu}}"
+                                  CommandParameter="{Binding}">
+                            <MenuItem.Icon>
+                                <Image Source="{Binding AppIcon}" Width="24" Height="24"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </DataTemplate>
+                </MenuItem.ItemTemplate>
+            </MenuItem>
+            <MenuItem Header="{loc:Translate Key=UI_HELP}">
+                <MenuItem Header="{loc:Translate Key=UI_ABOUT}" Command="{Binding AboutCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Collapsable Panels -->
+        <prControls:CollapsablePanelsBar DataContext="{Binding Path=DataContext, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}"/>
+
+        <!-- Status bar -->
+        <prViews:StatusbarView DockPanel.Dock="Bottom" DataContext="{Binding ApplicationVM}" />
+
+        <!-- tools -->
+        <views:ToolsView DataContext="{Binding ToolsVM}" 
+                         Visibility="{Binding Visible, Converter={StaticResource boolToVisibilityConverter}}"/>
+
+        <!-- Bottom panel views-->
+        <views:BottomPanelView DockPanel.Dock="Bottom" />
+
+        <!-- View -->
+        <ContentPresenter Content="{Binding CurrentView}"/>
+    </DockPanel>
+</Window>
